@@ -8,6 +8,20 @@ Aplicación básica en Flutter con listado de elementos, pantalla de detalles y 
 - **Pantalla de detalles (DetailsScreen)**: muestra la información del elemento; botones para editar (navega al formulario) y eliminar (con confirmación).
 - **Pantalla de formulario (FormScreen)**: permite crear un nuevo elemento o editar uno existente; validación de título obligatorio; botón para guardar/agregar.
 
+## Capturas (Fase 1)
+
+### Pantalla principal (Home)
+
+![Pantalla principal](assets/FASE_1/01_home.png)
+
+### Pantalla de detalles
+
+![Pantalla de detalles](assets/FASE_1/02_details.png)
+
+### Pantalla de formulario
+
+![Pantalla de formulario](assets/FASE_1/03_form.png)
+
 ## Diseño de la aplicación
 
 Se sigue **Clean Architecture** con dependencias hacia el dominio:
