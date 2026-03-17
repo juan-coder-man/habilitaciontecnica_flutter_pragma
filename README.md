@@ -10,17 +10,11 @@ Aplicación básica en Flutter con listado de elementos, pantalla de detalles y 
 
 ## Capturas (Fase 1)
 
-### Pantalla principal (Home)
-
-![Pantalla principal](assets/FASE_1/01_home.png)
-
-### Pantalla de detalles
-
-![Pantalla de detalles](assets/FASE_1/02_details.png)
-
-### Pantalla de formulario
-
-![Pantalla de formulario](assets/FASE_1/03_form.png)
+<p align="center">
+  <img src="assets/FASE_1/01_home.png" alt="Pantalla principal" width="280" />
+  <img src="assets/FASE_1/02_details.png" alt="Pantalla de detalles" width="280" />
+  <img src="assets/FASE_1/03_form.png" alt="Pantalla de formulario" width="280" />
+</p>
 
 ## Diseño de la aplicación
 
