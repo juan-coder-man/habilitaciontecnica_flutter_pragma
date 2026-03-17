@@ -71,15 +71,16 @@ class _FormScreenState extends State<FormScreen> {
               textCapitalization: TextCapitalization.sentences,
             ),
             const SizedBox(height: 24),
-            FilledButton(
+            FilledButton.icon(
               onPressed: _isSaving ? null : _save,
-              child: _isSaving
+              icon: _isSaving
                   ? const SizedBox(
-                      height: 22,
-                      width: 22,
+                      height: 20,
+                      width: 20,
                       child: CircularProgressIndicator(strokeWidth: 2),
                     )
-                  : Text(isEditing ? 'Guardar' : 'Agregar'),
+                  : Icon(isEditing ? Icons.save : Icons.add),
+              label: Text(isEditing ? 'Guardar' : 'Agregar'),
             ),
           ],
         ),
