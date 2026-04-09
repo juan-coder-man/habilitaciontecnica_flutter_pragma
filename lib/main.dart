@@ -1,12 +1,25 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:habilitaciontecnica_flutter_pragma/core/debug/store_demo_log.dart';
 import 'package:habilitaciontecnica_flutter_pragma/core/routes/app_routes.dart';
 import 'package:habilitaciontecnica_flutter_pragma/core/theme/app_theme.dart';
 import 'package:habilitaciontecnica_flutter_pragma/data/datasources/items_memory_datasource.dart';
+import 'package:habilitaciontecnica_flutter_pragma/data/datasources/store_remote_datasource.dart';
 import 'package:habilitaciontecnica_flutter_pragma/data/repositories/items_repository_impl.dart';
+import 'package:habilitaciontecnica_flutter_pragma/data/repositories/store_remote_repository_impl.dart';
 import 'package:provider/provider.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  unawaited(_bootstrapStoreDemo());
   runApp(const App());
+}
+
+Future<void> _bootstrapStoreDemo() async {
+  final repository = StoreRemoteRepositoryImpl(StoreRemoteDatasource());
+  final result = await repository.fetchDemoData();
+  logStoreDemoResult(result, debugPrint);
 }
 
 class App extends StatelessWidget {
