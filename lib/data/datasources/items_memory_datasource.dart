@@ -1,17 +1,17 @@
-import 'package:habilitaciontecnica_flutter_pragma/domain/entities/item.dart';
+import 'package:habilitaciontecnica_flutter_pragma/domain/entities/item_entity.dart';
 
 class ItemsMemoryDatasource {
   ItemsMemoryDatasource() : _items = [] {
     _seedItems();
   }
 
-  final List<Item> _items;
+  final List<ItemEntity> _items;
   int _idCounter = 0;
 
   void _seedItems() {
     final now = DateTime.now();
     _items.add(
-      Item(
+      ItemEntity(
         id: _nextId(),
         title: 'Ejemplo 1',
         description: 'Descripción del primer elemento de ejemplo.',
@@ -19,7 +19,7 @@ class ItemsMemoryDatasource {
       ),
     );
     _items.add(
-      Item(
+      ItemEntity(
         id: _nextId(),
         title: 'Ejemplo 2',
         description: 'Descripción del segundo elemento de ejemplo.',
@@ -32,9 +32,9 @@ class ItemsMemoryDatasource {
 
   String generateId() => _nextId();
 
-  List<Item> getAll() => List.unmodifiable(_items);
+  List<ItemEntity> getAll() => List.unmodifiable(_items);
 
-  Item? getById(String id) {
+  ItemEntity? getById(String id) {
     try {
       return _items.firstWhere((e) => e.id == id);
     } catch (_) {
@@ -42,11 +42,11 @@ class ItemsMemoryDatasource {
     }
   }
 
-  void add(Item item) {
+  void add(ItemEntity item) {
     _items.add(item);
   }
 
-  void update(Item item) {
+  void update(ItemEntity item) {
     final index = _items.indexWhere((e) => e.id == item.id);
     if (index >= 0) _items[index] = item;
   }

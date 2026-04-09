@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:habilitaciontecnica_flutter_pragma/domain/entities/item.dart';
+import 'package:habilitaciontecnica_flutter_pragma/domain/entities/item_entity.dart';
 
 class ItemCard extends StatelessWidget {
   const ItemCard({super.key, required this.item, required this.onTap});
 
-  final Item item;
+  final ItemEntity item;
   final VoidCallback onTap;
 
   @override

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:habilitaciontecnica_flutter_pragma/data/repositories/items_repository_impl.dart';
-import 'package:habilitaciontecnica_flutter_pragma/domain/entities/item.dart';
+import 'package:habilitaciontecnica_flutter_pragma/domain/entities/item_entity.dart';
 import 'package:provider/provider.dart';
 
 class FormScreen extends StatefulWidget {
   const FormScreen({super.key, this.editingItem});
 
-  final Item? editingItem;
+  final ItemEntity? editingItem;
 
   @override
   State<FormScreen> createState() => _FormScreenState();
@@ -103,7 +103,7 @@ class _FormScreenState extends State<FormScreen> {
       );
     } else {
       await repository.add(
-        Item(
+        ItemEntity(
           id: '',
           title: _titleController.text.trim(),
           description: _descriptionController.text.trim(),

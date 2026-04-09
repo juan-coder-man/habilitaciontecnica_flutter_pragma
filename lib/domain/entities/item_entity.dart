@@ -1,5 +1,5 @@
-class Item {
-  const Item({
+class ItemEntity {
+  const ItemEntity({
     required this.id,
     required this.title,
     required this.description,
@@ -11,13 +11,13 @@ class Item {
   final String description;
   final DateTime createdAt;
 
-  Item copyWith({
+  ItemEntity copyWith({
     String? id,
     String? title,
     String? description,
     DateTime? createdAt,
   }) {
-    return Item(
+    return ItemEntity(
       id: id ?? this.id,
       title: title ?? this.title,
       description: description ?? this.description,
@@ -28,7 +28,7 @@ class Item {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is Item && runtimeType == other.runtimeType && id == other.id;
+      other is ItemEntity && runtimeType == other.runtimeType && id == other.id;
 
   @override
   int get hashCode => id.hashCode;

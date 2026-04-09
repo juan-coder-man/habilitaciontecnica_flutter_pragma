@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:habilitaciontecnica_flutter_pragma/core/routes/app_routes.dart';
 import 'package:habilitaciontecnica_flutter_pragma/data/repositories/items_repository_impl.dart';
-import 'package:habilitaciontecnica_flutter_pragma/domain/entities/item.dart';
 import 'package:habilitaciontecnica_flutter_pragma/presentation/home/widgets/item_card.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -11,9 +10,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Listado'),
-      ),
+      appBar: AppBar(title: const Text('Listado')),
       body: Consumer<ItemsRepositoryImpl>(
         builder: (context, repository, _) {
           final items = repository.items;
@@ -22,8 +19,8 @@ class HomeScreen extends StatelessWidget {
               child: Text(
                 'No hay elementos. Agrega uno con el botón +.',
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                      color: Theme.of(context).colorScheme.onSurfaceVariant,
-                    ),
+                  color: Theme.of(context).colorScheme.onSurfaceVariant,
+                ),
                 textAlign: TextAlign.center,
               ),
             );
@@ -36,7 +33,11 @@ class HomeScreen extends StatelessWidget {
               final item = items[index];
               return ItemCard(
                 item: item,
-                onTap: () => _navigateToDetails(context, item),
+                onTap: () => Navigator.pushNamed(
+                  context,
+                  AppRoutes.details,
+                  arguments: item,
+                ),
               );
             },
           );
@@ -47,14 +48,6 @@ class HomeScreen extends StatelessWidget {
         tooltip: 'Agregar',
         child: const Icon(Icons.add),
       ),
-    );
-  }
-
-  void _navigateToDetails(BuildContext context, Item item) {
-    Navigator.pushNamed(
-      context,
-      AppRoutes.details,
-      arguments: item,
     );
   }
 }

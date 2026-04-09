@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:habilitaciontecnica_flutter_pragma/core/routes/app_routes.dart';
 import 'package:habilitaciontecnica_flutter_pragma/data/repositories/items_repository_impl.dart';
-import 'package:habilitaciontecnica_flutter_pragma/domain/entities/item.dart';
+import 'package:habilitaciontecnica_flutter_pragma/domain/entities/item_entity.dart';
 import 'package:provider/provider.dart';
 
 class DetailsScreen extends StatelessWidget {
   const DetailsScreen({super.key, required this.item});
 
-  final Item item;
+  final ItemEntity item;
 
   @override
   Widget build(BuildContext context) {
-    final repository = context.read<ItemsRepositoryImpl>();
+    final repository = context.watch<ItemsRepositoryImpl>();
     final current = repository.getById(item.id);
     if (current == null) {
       return Scaffold(
@@ -98,7 +98,7 @@ class DetailsScreen extends StatelessWidget {
     return '${date.day}/${date.month}/${date.year}';
   }
 
-  void _navigateToForm(BuildContext context, Item item) {
+  void _navigateToForm(BuildContext context, ItemEntity item) {
     Navigator.pushNamed(context, AppRoutes.form, arguments: item);
   }
 
