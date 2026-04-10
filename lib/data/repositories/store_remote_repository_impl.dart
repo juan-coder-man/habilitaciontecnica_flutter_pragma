@@ -4,6 +4,7 @@ import 'package:habilitaciontecnica_flutter_pragma/domain/entities/store_demo_da
 import 'package:habilitaciontecnica_flutter_pragma/domain/failures/failure.dart';
 import 'package:habilitaciontecnica_flutter_pragma/domain/repositories/store_remote_repository.dart';
 
+/// Implementación que orquesta el [StoreRemoteDatasource] y unifica el resultado en [StoreDemoData].
 class StoreRemoteRepositoryImpl implements StoreRemoteRepository {
   StoreRemoteRepositoryImpl(this._datasource);
 
@@ -13,6 +14,7 @@ class StoreRemoteRepositoryImpl implements StoreRemoteRepository {
   static const String _labelFallback =
       'https://dummyjson.com (respaldo en uno o más endpoints)';
 
+  /// Solicita productos, usuario y carrito; si alguna petición falla, devuelve el primer [Failure].
   @override
   Future<Either<Failure, StoreDemoData>> fetchDemoData() async {
     final productsResult = await _datasource.fetchLimitedProducts(limit: 5);

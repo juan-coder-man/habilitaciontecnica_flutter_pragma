@@ -1,3 +1,13 @@
+/// Entidad de dominio que representa un usuario registrado en la tienda.
+///
+/// - [id]: Identificador único del usuario en la API.
+/// - [email]: Correo electrónico del usuario.
+/// - [username]: Nombre de usuario para inicio de sesión o visualización.
+/// - [firstName]: Nombre de pila.
+/// - [lastName]: Apellido.
+/// - [phone]: Teléfono de contacto.
+///
+/// Además expone [fullName], nombre completo concatenado para la UI.
 class UserEntity {
   const UserEntity({
     required this.id,
@@ -15,5 +25,6 @@ class UserEntity {
   final String lastName;
   final String phone;
 
+  /// Nombre y apellido unidos, recortando espacios sobrantes.
   String get fullName => '$firstName $lastName'.trim();
 }

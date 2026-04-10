@@ -1,3 +1,9 @@
+/// Entidad de dominio para un ítem genérico de lista (p. ej. contenido local).
+///
+/// - [id]: Identificador único del ítem.
+/// - [title]: Título breve mostrado en listas o cabeceras.
+/// - [description]: Texto descriptivo o detalle adicional.
+/// - [createdAt]: Momento de creación del registro.
 class ItemEntity {
   const ItemEntity({
     required this.id,
