@@ -31,6 +31,9 @@ dependencies:
   flutter:
     sdk: flutter
 
+  calculator:
+    path: packages/calculator
+
   cupertino_icons: ^1.0.8
   google_fonts: ^6.2.1
   provider: ^6.1.2

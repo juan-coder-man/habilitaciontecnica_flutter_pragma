@@ -1,0 +1,11 @@
+name: calculator
+description: "Operaciones aritméticas básicas para la app."
+version: 0.0.1
+publish_to: none
+
+environment:
+  sdk: ^3.10.8
+
+dev_dependencies:
+  lints: ^6.0.0
+  test: ^1.25.0
