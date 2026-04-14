@@ -1,3 +1,8 @@
+## 0.1.0
+
+- Cliente HTTP con Fake Store y respaldo DummyJSON.
+- Modelos, parseo y fachada `FakeStoreApiClient.fetchDemoData`.
+
 ## 0.0.1
 
-* TODO: Describe initial release.
+- Esqueleto del paquete.

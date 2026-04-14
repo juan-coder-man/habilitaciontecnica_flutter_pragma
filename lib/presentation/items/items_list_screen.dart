@@ -4,13 +4,13 @@ import 'package:habilitaciontecnica_flutter_pragma/data/repositories/items_repos
 import 'package:habilitaciontecnica_flutter_pragma/presentation/home/widgets/item_card.dart';
 import 'package:provider/provider.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class ItemsListScreen extends StatelessWidget {
+  const ItemsListScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Listado')),
+      appBar: AppBar(title: const Text('Elementos')),
       body: Consumer<ItemsRepositoryImpl>(
         builder: (context, repository, _) {
           final items = repository.items;

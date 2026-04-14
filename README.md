@@ -1,6 +1,54 @@
 # Habilitación técnica Flutter
 
-Aplicación en Flutter (Fase 1) y consumo de API con Dart (Fase 2). Proyecto de prueba técnica siguiendo Clean Architecture, SOLID y Clean Code.
+Aplicación en Flutter (Fase 1), consumo de API con Dart (Fase 2) y paquete reutilizable `api_fakestore` (Fase 3). Proyecto de prueba técnica siguiendo Clean Architecture, SOLID y Clean Code.
+
+## Fase 3 – Paquete `api_fakestore` y ejemplo en la app
+
+### Objetivo
+
+Encapsular el acceso a Fake Store (con respaldo DummyJSON) en un **paquete Dart** bajo [`packages/api_fakestore`](packages/api_fakestore) y demostrar su uso desde la aplicación Flutter y desde consola.
+
+### Contenido del paquete
+
+- Cliente [`FakeStoreApiClient`](packages/api_fakestore/lib/src/fake_store_api_client.dart) con `fetchDemoData()`.
+- Mismas reglas que la capa de datos de la Fase 2: timeout 15 s, `Accept: application/json`, intento primero en `fakestoreapi.com` y respaldo en `dummyjson.com`.
+- Modelos propios del paquete (`StoreProductModel`, `StoreUserModel`, `StoreCartModel`, `FakeStoreDemoDataModel`) y fallos `ApiFailure` (red, HTTP, parseo).
+
+La app principal declara el paquete como dependencia local:
+
+```yaml
+dependencies:
+  api_fakestore:
+    path: packages/api_fakestore
+```
+
+### Consola (sin levantar la UI)
+
+Tras `flutter pub get` en la raíz del proyecto:
+
+```bash
+dart run bin/api_fakestore_demo.dart
+```
+
+Al iniciar la app, el mismo flujo se registra en la consola de depuración vía `debugPrint` en [`lib/main.dart`](lib/main.dart).
+
+### Pantallas en Flutter
+
+- En la pantalla principal (**Listado**), el icono de tienda en la barra superior abre el demo del paquete.
+- Ruta interna: `AppRoutes.storePackage` → listado de productos, usuario y carrito.
+- Al tocar un producto se navega a `AppRoutes.storePackageProductDetail` con el modelo `StoreProductModel` del paquete.
+
+### Capturas (Fase 3)
+
+<p align="center">
+  <img src="assets/FASE_3/01_home.png" alt="Pantalla principal con acceso al demo del paquete" width="280" />
+  <img src="assets/FASE_3/02_products.png" alt="Listado de productos, usuario y carrito" width="280" />
+  <img src="assets/FASE_3/03_details.png" alt="Detalle de producto" width="280" />
+</p>
+
+Documentación detallada del paquete: [`packages/api_fakestore/README.md`](packages/api_fakestore/README.md).
+
+---
 
 ## Fase 2 – Fake Store API (consola)
 

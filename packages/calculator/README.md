@@ -1,39 +1,49 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# calculator
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/tools/pub/writing-package-pages).
+Paquete Dart con operaciones aritméticas básicas sobre `double`. Expone un contrato (`Calculator`) y una implementación por defecto (`BasicCalculator`) para poder inyectar la dependencia en tests o en la app.
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/to/develop-packages).
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
-
-## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
-
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
-
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+## Uso
 
 ```dart
-const like = 'sample';
+import 'package:calculator/calculator.dart';
+
+void main() {
+  const Calculator calculator = BasicCalculator();
+
+  final suma = calculator.add(12, 8);
+  final resta = calculator.subtract(10, 3);
+  final producto = calculator.multiply(4, 5);
+  final cociente = calculator.divide(15, 2);
+}
 ```
 
-## Additional information
+### API
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+| Símbolo           | Descripción                                                                    |
+| ----------------- | ------------------------------------------------------------------------------ |
+| `Calculator`      | Interfaz con `add`, `subtract`, `multiply`, `divide`.                          |
+| `BasicCalculator` | Implementación concreta; `divide` lanza `ArgumentError` si el divisor es cero. |
+
+## Dependencia en la app
+
+En el `pubspec` de la aplicación:
+
+```yaml
+dependencies:
+  calculator:
+    path: packages/calculator
+```
+
+La app de ejemplo registra una demo en consola al arrancar ([`lib/core/debug/calculator_demo_log.dart`](../../lib/core/debug/calculator_demo_log.dart)) y expone un script sin UI:
+
+```bash
+dart run bin/calculator_demo.dart
+```
+
+## Tests
+
+```bash
+cd packages/calculator
+dart pub get
+dart test
+```
